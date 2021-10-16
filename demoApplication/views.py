@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
 from .models import Book
+from django.shortcuts import render
 
 
 # Create your views here.
@@ -20,3 +21,6 @@ class Another(View):
 
 def first(request):
     return HttpResponse('First message from views')
+
+def showTemplate(request):
+    return render( request, 'first_template.html')

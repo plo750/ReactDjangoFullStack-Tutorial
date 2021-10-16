@@ -5,4 +5,5 @@ from .views import Another
 urlpatterns = [
     path('first', views.first),
     path('another', Another.as_view()),
+    path('showTemplate', views.showTemplate)
 ]
