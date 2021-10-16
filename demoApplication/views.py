@@ -7,7 +7,6 @@ from django.shortcuts import render
 
 # Create your views here.
 class Another(View):
-
     # books = Book.objects.filter(is_published=True)
     # books = Book.objects.filter(id=2)
     books = Book.objects.all()
@@ -22,5 +21,7 @@ class Another(View):
 def first(request):
     return HttpResponse('First message from views')
 
+
 def showTemplate(request):
-    return render( request, 'first_template.html')
+    books = Book.objects.all()
+    return render(request, 'first_template.html', {'books': books})
