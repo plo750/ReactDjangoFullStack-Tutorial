@@ -4,8 +4,11 @@ from django.views import View
 from .models import Book
 from django.shortcuts import render
 
+# serializers
+from rest_framework import viewsets
+from .serializers import BookSerializer
 
-# Create your views here.
+
 class Another(View):
     # books = Book.objects.filter(is_published=True)
     # books = Book.objects.filter(id=2)
@@ -25,3 +28,10 @@ def first(request):
 def showTemplate(request):
     books = Book.objects.all()
     return render(request, 'first_template.html', {'books': books})
+
+
+# serializers
+# Create a builtin views
+class BookViewSet(viewsets.ModelViewSet):
+    serializer_class = BookSerializer
+    queryset = Book.objects.all()
