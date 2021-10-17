@@ -7,6 +7,10 @@ from django.shortcuts import render
 # serializers
 from rest_framework import viewsets
 from .serializers import BookSerializer
+# Token authentication
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 
 
 class Another(View):
@@ -35,3 +39,5 @@ def showTemplate(request):
 class BookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
     queryset = Book.objects.all()
+    authentication_classes = (TokenAuthentication,) # Is a tupple need a coma
+    permission_classes = (IsAuthenticated,)

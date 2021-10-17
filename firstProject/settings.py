@@ -83,6 +83,13 @@ DATABASES = {
     }
 }
 
+# Restrict our application only used if authenticated
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        #'rest_framework.permissions.IsAuthenticated',  # Tupple need a coma.
+        'rest_framework.permissions.AllowAny',  # Tupple need a coma.
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
