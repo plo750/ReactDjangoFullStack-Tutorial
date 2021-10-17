@@ -11,8 +11,7 @@ from .serializers import BookSerializer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-
-
+"""
 class Another(View):
     # books = Book.objects.filter(is_published=True)
     # books = Book.objects.filter(id=2)
@@ -23,13 +22,14 @@ class Another(View):
 
     def get(self, request):
         return HttpResponse(self.output)
+"""
 
 
 def first(request):
     return HttpResponse('First message from views')
 
 
-def showTemplate(request):
+def show_template(request):
     books = Book.objects.all()
     return render(request, 'first_template.html', {'books': books})
 
@@ -39,5 +39,5 @@ def showTemplate(request):
 class BookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
     queryset = Book.objects.all()
-    authentication_classes = (TokenAuthentication,) # Is a tupple need a coma
+    authentication_classes = (TokenAuthentication,)  # Is a tupple need a coma
     permission_classes = (IsAuthenticated,)

@@ -1,10 +1,14 @@
 from django.db import models
 
 
+class BookNumber(models.Model):
+    isbn_10 = models.CharField(max_length=10, blank=True)
+    isbn_13 = models.CharField(max_length=13, blank=True)
+
+
 # Create your models here.
 class Book(models.Model):
     """
-
     null=True =/= blank=False
     default='' ==> No sense with null=True first because the default will never be triggered
     choices BOOKS = [
@@ -27,6 +31,8 @@ class Book(models.Model):
 
     cover = models.ImageField(upload_to='covers/', blank=True)
 
-    #def __str__(self):
-    #    return self.title
+    number = models.OneToOneField(BookNumber, null=True, blank=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
 
