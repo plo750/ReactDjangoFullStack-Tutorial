@@ -36,7 +36,14 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+
 class Character(models.Model):
     name = models.CharField(max_length=30)
     book = models.ForeignKey(Book, on_delete=models.CASCADE,
                              related_name='characters')
+
+
+class Author(models.Model):
+    name = models.CharField(max_length=30)
+    surname = models.CharField(max_length=30)
+    books = models.ManyToManyField(Book, related_name='authors')
